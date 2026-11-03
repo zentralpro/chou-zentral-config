@@ -8,7 +8,7 @@ resource "zentral_mdm_blueprint" "mobile" {
 }
 
 data "zentral_mdm_location" "default" {
-  name = "petit-coco.zentral.cloud"
+  name = "petit-chou.zentral.cloud"
 }
 
 

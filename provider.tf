@@ -7,9 +7,9 @@ terraform {
   }
 
   backend "http" {
-    address        = "https://petit-coco.zentral.cloud/api/terraform/backend/starter_kit/"
-    lock_address   = "https://petit-coco.zentral.cloud/api/terraform/backend/starter_kit/lock/"
-    unlock_address = "https://petit-coco.zentral.cloud/api/terraform/backend/starter_kit/lock/"
+    address        = "https://petit-chou.zentral.cloud/api/terraform/backend/starter_kit/"
+    lock_address   = "https://petit-chou.zentral.cloud/api/terraform/backend/starter_kit/lock/"
+    unlock_address = "https://petit-chou.zentral.cloud/api/terraform/backend/starter_kit/lock/"
     lock_method    = "POST"
     unlock_method  = "DELETE"
   }

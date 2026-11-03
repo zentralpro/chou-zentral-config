@@ -183,7 +183,7 @@ resource "zentral_mdm_declaration" "slack-1" {
   artifact_id = zentral_mdm_artifact.slack.id
   source = jsonencode({
     Type        = "com.apple.configuration.app.managed",
-    Identifier  = "cloud.zentral.petit-coco.configuration.slack",
+    Identifier  = "cloud.zentral.petit-chou.configuration.slack",
     ServerToken = "1324DEB8-38C5-4792-9E77-805D97000FED",
     Payload = {
       AppStoreID = "618783545"
@@ -215,7 +215,7 @@ resource "zentral_mdm_declaration" "arte-1" {
   artifact_id = zentral_mdm_artifact.arte.id
   source = jsonencode({
     Type        = "com.apple.configuration.app.managed",
-    Identifier  = "cloud.zentral.petit-coco.configuration.arte",
+    Identifier  = "cloud.zentral.petit-chou.configuration.arte",
     ServerToken = "FCE25E9E-8BD6-4513-94B3-CC80FF8C1238",
     Payload = {
       AppStoreID = "405028510"
