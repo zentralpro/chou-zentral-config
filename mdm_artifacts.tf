@@ -56,6 +56,14 @@ resource "zentral_mdm_enterprise_app" "bootstrap-pkg-2024-001" {
   version        = 1
 }
 
+resource "zentral_mdm_enterprise_app" "bootstrap-pkg-2026-001" {
+  artifact_id    = zentral_mdm_artifact.bootstrap-pkg.id
+  package_uri    = "s3://zentral-pro-services-artifacts-eu-central-1/saas-public/bootstrap-2026.009.pkg"
+  package_sha256 = "21a449449fc89facab792682424b5d99c454f69d71a2b82bab62b7eb2947812e"
+  macos          = true
+  version        = 2
+}
+
 # All
 
 resource "zentral_mdm_artifact" "servicemanagement" {
