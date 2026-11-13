@@ -247,7 +247,7 @@ resource "zentral_mdm_declaration" "arte-2" {
   artifact_id = zentral_mdm_artifact.arte.id
   source = jsonencode({
     Type        = "com.apple.configuration.app.managed",
-    Identifier  = "cloud.zentral.petit-chou.configuration.arte",
+    Identifier  = "cloud.zentral.petit-chou.configuration.macos.arte",
     ServerToken = "AC0217CD-162E-44FA-8535-784EE5593495",
     Payload = {
       AppStoreID = "405028510"
