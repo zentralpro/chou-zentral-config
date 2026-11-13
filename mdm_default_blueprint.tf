@@ -164,7 +164,7 @@ resource "zentral_mdm_declaration" "buffet-macos-2" {
     Identifier  = "com.zentral.buffet-macos",
     ServerToken = "3EC62500-1EFD-4E91-A058-EC2F88E16A45",
     Payload = {
-      BundleID = "com.zentral.buffet"
+      AppComposedIdentifier = "com.zentral.buffet (WQ28ZDJ49Y)"
       InstallBehavior = {
         Install = "Required"
         License = {
