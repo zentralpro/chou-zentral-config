@@ -6,7 +6,7 @@ resource "zentral_mdm_blueprint" "default" {
   legacy_profiles_via_ddm         = true
   filevault_config_id             = zentral_mdm_filevault_config.default.id
   recovery_password_config_id     = zentral_mdm_recovery_password_config.default.id
-  software_update_enforcement_ids = [zentral_mdm_software_update_enforcement.default.id]
+  software_update_enforcement_ids = [zentral_mdm_software_update_enforcement.default.id, zentral_mdm_software_update_enforcement.default-27.id]
 }
 
 # FileVault
@@ -34,6 +34,13 @@ resource "zentral_mdm_software_update_enforcement" "default" {
   max_os_version = "27"
   delay_days     = 7
   details_url    = "https://support.apple.com/en-us/122868"
+}
+
+resource "zentral_mdm_software_update_enforcement" "default-27" {
+  name           = "Default"
+  platforms      = ["macOS"]
+  max_os_version = "28"
+  delay_days     = 7
 }
 
 # Bootstrap package
@@ -127,7 +134,7 @@ resource "zentral_mdm_declaration" "buffet-macos-1" {
   artifact_id = zentral_mdm_artifact.buffet-macos.id
   source = jsonencode({
     Type        = "com.apple.configuration.app.managed",
-    Identifier  = "com.zentral.buffet",
+    Identifier  = "com.zentral.buffet-macos",
     ServerToken = "839FF4D8-EE1A-475A-9F4C-CEFE9DBCBEC0",
     Payload = {
       BundleID = "com.zentral.buffet"
