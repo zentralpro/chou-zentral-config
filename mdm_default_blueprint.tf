@@ -161,7 +161,7 @@ resource "zentral_mdm_declaration" "buffet-macos-2" {
   source = jsonencode({
     Type        = "com.apple.configuration.app.managed",
     Identifier  = "com.zentral.buffet-macos",
-    ServerToken = "839FF4D8-EE1A-475A-9F4C-CEFE9DBCBEC0",
+    ServerToken = "3EC62500-1EFD-4E91-A058-EC2F88E16A45",
     Payload = {
       BundleID = "com.zentral.buffet"
       InstallBehavior = {
