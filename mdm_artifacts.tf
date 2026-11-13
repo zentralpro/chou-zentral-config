@@ -216,7 +216,7 @@ resource "zentral_mdm_artifact" "arte" {
   name      = "Arte iOS app (optional)"
   type      = "Configuration"
   channel   = "Device"
-  platforms = ["macOS", "iOS", "iPadOS"]
+  platforms = ["iOS", "iPadOS"]
 }
 
 resource "zentral_mdm_declaration" "arte-1" {
@@ -243,11 +243,18 @@ resource "zentral_mdm_declaration" "arte-1" {
   version = 1
 }
 
-resource "zentral_mdm_declaration" "arte-2" {
-  artifact_id = zentral_mdm_artifact.arte.id
+resource "zentral_mdm_artifact" "arte-macos" {
+  name      = "Arte macOS app (optional)"
+  type      = "Configuration"
+  channel   = "Device"
+  platforms = ["macOS"]
+}
+
+resource "zentral_mdm_declaration" "arte-macos-2" {
+  artifact_id = zentral_mdm_artifact.arte-macos.id
   source = jsonencode({
     Type        = "com.apple.configuration.app.managed",
-    Identifier  = "cloud.zentral.petit-chou.configuration.macos.arte",
+    Identifier  = "cloud.zentral.petit-chou.configuration-macos.arte",
     ServerToken = "AC0217CD-162E-44FA-8535-784EE5593495",
     Payload = {
       AppStoreID = "405028510"
@@ -262,8 +269,6 @@ resource "zentral_mdm_declaration" "arte-2" {
       }
     }
   })
-  ios     = true
-  ipados  = true
   macos   = true
-  version = 2
+  version = 1
 }
