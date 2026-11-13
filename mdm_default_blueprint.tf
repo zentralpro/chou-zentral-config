@@ -115,7 +115,7 @@ resource "zentral_mdm_blueprint_artifact" "system-logging" {
 
 resource "zentral_mdm_blueprint_artifact" "arte-macos" {
   blueprint_id = zentral_mdm_blueprint.default.id
-  artifact_id  = zentral_mdm_artifact.arte.id
+  artifact_id  = zentral_mdm_artifact.arte-macos.id
   macos        = true
 }
 
