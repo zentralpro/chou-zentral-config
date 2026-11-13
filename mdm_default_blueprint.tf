@@ -37,7 +37,7 @@ resource "zentral_mdm_software_update_enforcement" "default" {
 }
 
 resource "zentral_mdm_software_update_enforcement" "default-27" {
-  name           = "Default"
+  name           = "macOS 27"
   platforms      = ["macOS"]
   max_os_version = "28"
   delay_days     = 7
@@ -113,6 +113,13 @@ resource "zentral_mdm_blueprint_artifact" "system-logging" {
   macos        = true
 }
 
+resource "zentral_mdm_blueprint_artifact" "arte-macos" {
+  blueprint_id = zentral_mdm_blueprint.default.id
+  artifact_id  = zentral_mdm_artifact.arte.id
+  macos        = true
+}
+
+
 
 # Buffet
 
@@ -147,6 +154,34 @@ resource "zentral_mdm_declaration" "buffet-macos-1" {
   })
   macos   = true
   version = 1
+}
+
+resource "zentral_mdm_declaration" "buffet-macos-2" {
+  artifact_id = zentral_mdm_artifact.buffet-macos.id
+  source = jsonencode({
+    Type        = "com.apple.configuration.app.managed",
+    Identifier  = "com.zentral.buffet-macos",
+    ServerToken = "839FF4D8-EE1A-475A-9F4C-CEFE9DBCBEC0",
+    Payload = {
+      BundleID = "com.zentral.buffet"
+      InstallBehavior = {
+        Install = "Required"
+        License = {
+          Assignment = "Device"
+        }
+      }
+      UpdateBehavior = {
+        AutomaticAppUpdates = "AlwaysOn"
+      }
+      AppConfig = {
+        AppConfigDictionary = {
+          DataAssetReference = "ztl:${zentral_mdm_artifact.buffet-macos-config-dict.id}"
+        }
+      }
+    }
+  })
+  macos   = true
+  version = 2
 }
 
 

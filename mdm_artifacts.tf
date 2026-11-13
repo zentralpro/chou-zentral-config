@@ -216,7 +216,7 @@ resource "zentral_mdm_artifact" "arte" {
   name      = "Arte iOS app (optional)"
   type      = "Configuration"
   channel   = "Device"
-  platforms = ["iOS", "iPadOS"]
+  platforms = ["macOS", "iOS", "iPadOS"]
 }
 
 resource "zentral_mdm_declaration" "arte-1" {
@@ -241,4 +241,29 @@ resource "zentral_mdm_declaration" "arte-1" {
   ios     = true
   ipados  = true
   version = 1
+}
+
+resource "zentral_mdm_declaration" "arte-2" {
+  artifact_id = zentral_mdm_artifact.arte.id
+  source = jsonencode({
+    Type        = "com.apple.configuration.app.managed",
+    Identifier  = "cloud.zentral.petit-chou.configuration.arte",
+    ServerToken = "AC0217CD-162E-44FA-8535-784EE5593495",
+    Payload = {
+      AppStoreID = "405028510"
+      UpdateBehavior = {
+        AutomaticAppUpdates = "AlwaysOn"
+      }
+      InstallBehavior = {
+        Install = "Optional"
+        License = {
+          Assignment = "Device"
+        }
+      }
+    }
+  })
+  ios     = true
+  ipados  = true
+  macos   = true
+  version = 2
 }
