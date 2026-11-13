@@ -3,6 +3,7 @@ resource "zentral_mdm_blueprint" "default" {
   collect_apps                    = "ALL"
   collect_certificates            = "ALL"
   collect_profiles                = "ALL"
+  default_location_id             = data.zentral_mdm_location.default.id
   legacy_profiles_via_ddm         = true
   filevault_config_id             = zentral_mdm_filevault_config.default.id
   recovery_password_config_id     = zentral_mdm_recovery_password_config.default.id
@@ -174,9 +175,7 @@ resource "zentral_mdm_declaration" "buffet-macos-2" {
         AutomaticAppUpdates = "AlwaysOn"
       }
       AppConfig = {
-        AppConfigDictionary = {
-          DataAssetReference = "ztl:${zentral_mdm_artifact.buffet-macos-config-dict.id}"
-        }
+        DataAssetReference = "ztl:${zentral_mdm_artifact.buffet-macos-config-dict.id}"
       }
     }
   })
